@@ -1,4 +1,5 @@
-//合并所有reducer 并返回
+//合并所有reducer 并返回，其他组件调用时使用state.xxx进行填入connect的第一个参数
 import { combineReducers } from 'redux'
+import {user} from './redux/user.redux.js'
 
-export default combineReducers({})
+export default combineReducers({user})

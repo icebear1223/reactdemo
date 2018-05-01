@@ -8,17 +8,31 @@ import reducers from './reducer';
 import './config'
 import Login from './container/login/login.js'
 import Register from './container/register/register.js'
+import BossInfo from './container/bossinfo/bossinfo.js'
+import GeniusInfo from './container/geniusinfo/geniusinfo.js'
 import 'antd-mobile/dist/antd-mobile.css'
-
-const store = createStore(reducers,compose(applyMiddleware(thunk)))
-
+import './index.css'
+import AuthRoute from './component/authroute/authroute.js'
+import Dashboard from './container/dashboard/dashboard.js'
+const store = createStore(reducers,compose(
+	applyMiddleware(thunk),
+	window.devToolsExtension?window.devToolsExtension():f=>f
+))
+//boss genius 我的 msg
 ReactDOM.render(
 	(
 		<Provider store={store}>
 			<BrowserRouter>
 				<div>
-					<Route path='/login' component={Login}></Route>
-					<Route path='/register' component={Register}></Route>
+					<AuthRoute></AuthRoute>
+					<Switch>
+						<Route path='/bossinfo' component={BossInfo}></Route>
+						<Route path='/geniusinfo' component={GeniusInfo}></Route>
+						<Route path='/login' component={Login}></Route>
+						<Route path='/register' component={Register}></Route>
+						<Route component={Dashboard}></Route>
+					</Switch>
+					
 				</div>
 			</BrowserRouter>
 		</Provider>

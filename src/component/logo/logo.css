@@ -2,4 +2,8 @@
 	margin-top: 50px;
 	text-align: center;
 	margin-bottom: 20px;
+	width:100%;
+}
+.logo-container > img{
+	width: 100%;
 }
