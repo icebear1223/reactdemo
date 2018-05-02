@@ -49,7 +49,7 @@ export function login({user,pwd}) {
 	}
 }
 //注册调用方法dispatch
-export function register({user,pwd,repeatpwd,type,avatar}) {
+export function register({user,pwd,repeatpwd,type}) {
 	//判断是否为空和密码是否一致
 	if(!user||!pwd||!type||!repeatpwd){
 		return errorMsg('用户名密码必须输入')
@@ -59,10 +59,10 @@ export function register({user,pwd,repeatpwd,type,avatar}) {
 	}
 	//一致则将dispatch方法以参数的形式传入调用
 	return dispatch=>{
-		axios.post('/user/register',{user,pwd,type,avatar})
+		axios.post('/user/register',{user,pwd,type})
 		.then(res=>{
 			if (res.status == 200 && res.data.code===0) {
-				dispatch(authSuccess({user,pwd,type,avatar}))
+				dispatch(authSuccess({user,pwd,type}))
 			}else{
 				dispatch(errorMsg(res.data.msg))
 			}
