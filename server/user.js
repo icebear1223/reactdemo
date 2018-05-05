@@ -2,11 +2,38 @@ const express = require('express')
 const Router = express.Router()
 const model = require('./model.js')
 const User = model.getModel('user')
+const Chat = model.getModel('chat')
+// Chat.remove({},function(e,d) {
+	
+// })
+//
+Router.get('/getmsglist',function(req,res) {
+	const user = req.cookies.userid
+	User.find({},function(e,d) {
+		let users = {}
+		d.forEach(v=>{
+			users[v._id] = {name:v.user,avatar:v.avatar}
+		})
+		Chat.find({'$or':[{from:user},{to:user}]},function(err,doc) {
+			if(!err){
+				return res.json({code:0,msgs:doc,users})
+			}
+		})
+	})
+})
+
 
 Router.get('/list',function(req,res) {
-	//User.remove({},function(e,d) {})//删除数据库数据
 	const type = req.query.type
+	//User.remove({},function(e,d) {})//删除数据库数据
 	User.find({type},function(err,doc) {
+		return res.json({code:0,data:doc})
+	})
+})
+
+Router.get('/listall',function(req,res) {
+	User.remove({},function(e,d) {})//删除数据库数据
+	User.find({},function(err,doc) {
 		return res.json({code:0,data:doc})
 	})
 })

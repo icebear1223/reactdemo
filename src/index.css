@@ -1,7 +1,8 @@
 .am-tab-bar{
 	position:fixed;
 	bottom:0;
-	width: 100%
+	width: 100%;
+	height:auto;
 }
 .fixed-header.am-navbar{
 	position:fixed;
@@ -13,4 +14,18 @@
 }
 .content{
 	margin-top: 45px;
+}
+
+#chat-page .chat-me .am-list-extra{
+	flex-basis: auto;
+}
+#chat-page .chat-me .am-list-content{
+	padding-right: 15px;
+	text-align: right;
+}
+.stick-footer{
+	z-index: 10;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }

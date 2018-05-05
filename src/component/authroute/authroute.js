@@ -9,6 +9,7 @@ class AuthRoute extends React.Component{
 	componentDidMount(){
 		const publicList = ['/login','/register']
 		const pathname = this.props.pathname;
+		console.log(this.props)
 		if (publicList.indexOf(pathname)>-1) {
 			return null
 		}
@@ -18,6 +19,7 @@ class AuthRoute extends React.Component{
 				if (res.status == 200) {
 					if(res.data.code==0){
 						//有登录信息
+						console.log(this.props)
 						this.props.userinfo(res.data.data)
 					}else{
 						this.props.history.push('/login')

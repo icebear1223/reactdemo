@@ -10,6 +10,7 @@ import Login from './container/login/login.js'
 import Register from './container/register/register.js'
 import BossInfo from './container/bossinfo/bossinfo.js'
 import GeniusInfo from './container/geniusinfo/geniusinfo.js'
+import Chat from './component/chat/chat.js'
 import 'antd-mobile/dist/antd-mobile.css'
 import './index.css'
 import AuthRoute from './component/authroute/authroute.js'
@@ -30,6 +31,7 @@ ReactDOM.render(
 						<Route path='/geniusinfo' component={GeniusInfo}></Route>
 						<Route path='/login' component={Login}></Route>
 						<Route path='/register' component={Register}></Route>
+						<Route path='/chat/:user' component={Chat}></Route>
 						<Route component={Dashboard}></Route>
 					</Switch>
 					

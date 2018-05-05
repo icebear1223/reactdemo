@@ -24,14 +24,14 @@ class Login extends React.Component{
 	}
 	handleChange(key,val){
 		this.setState({
-			[key]:val//这个写法不是很懂
+			[key]:val
 		})
 	}
 	render() {
 		return (
 			<div>
 				<Logo></Logo>
-				{this.props.redirectTo?<Redirect to={this.props.redirectTo} />:null}
+				{this.props.redirectTo&&this.props.redirectTo!=='/login'?<Redirect to={this.props.redirectTo} />:null}
 				<WingBlank>
 					{this.props.msg?<span className="error-msg">{this.props.msg}</span>:null}
 					<List>
